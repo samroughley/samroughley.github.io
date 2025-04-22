@@ -1,8 +1,6 @@
-# Test title
+## Education
+- MSci. Natural Sciences | University of Cambridge
+- BA Natural Sciences | University of Cambridge
 
-Here is some text...
-
-
-## Here is a smaller title
-
-And here is even more text...
+## Work Experience
+- Stuff
