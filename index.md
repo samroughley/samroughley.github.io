@@ -1,6 +1,6 @@
 ## Education
-* Master's Degree
-* Bachelor's Degree
+- Master's Degree
+- Bachelor's Degree
 
 ## Work Experience
 * Optiver Career Kickstarter
