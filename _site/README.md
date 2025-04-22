@@ -1,6 +1,1 @@
-## Education
-- MSci. Natural Sciences | University of Cambridge
-- BA Natural Sciences | University of Cambridge
-
-## Work Experience
-- Stuff
+This repo is for building a GitHub Pages site to host an 'online CV', personal projects, etc...
