@@ -4,3 +4,5 @@ theme: jekyll-theme-minimal
 header_pages:
 - about.md
 - projects.md
+
+url: "https://samroughley.github.io"
