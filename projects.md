@@ -1,3 +1,7 @@
+---
+layout: default
+title: Projects
+---
 # Projects
 
 Here is a list of example projects:
