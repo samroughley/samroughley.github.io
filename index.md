@@ -1,8 +1,15 @@
-# Physics Student
+# Physics Student
 
 ## Education
-- Master's Degree
-- Bachelor's Degree
+* MSci. Natural Sciences | University of Cambridge
+* BA Natural Sciences | University of Cambridge
 
 ## Work Experience
-* Work experience
+**Career Kickstarter: Trading**
+* Spent a week at Optiver's Amsterdam office learning about Options theory
+* Participated in trading games
+* Coded my own trading algorithms
+
+**Crozier's of Birkdale**
+* Worked both front of house and back of house
+* Teamwork and stuff
