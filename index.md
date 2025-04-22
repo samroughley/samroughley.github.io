@@ -1,3 +1,7 @@
-# Test title
+## Education
+* Master's Degree
+* Bachelor's Degree
 
-Seeing if the site takes the README or index file first...
+## Work Experience
+* Optiver Career Kickstarter
+* Croziers
