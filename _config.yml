@@ -1,6 +1,6 @@
 title: Sam Roughley
 #theme: jekyll-theme-minimal
-theme: minima
+theme: minimal-mistakes
 
 header_pages:
 - about.md
