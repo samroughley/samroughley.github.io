@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About
+filename: about.md
 ---
 # About
 
