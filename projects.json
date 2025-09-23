@@ -1,0 +1,27 @@
+[
+    {
+      "title": "Sports Betting Dashboard",
+      "description": "Dashboard analysing traditional betting markets and Polymarket, checking for arbitrage opportunities.",
+      "image": "assets/images/GD_pipeline.jpg",
+      "link": "https://github.com/samroughley/Prediction-Markets-Arbitrage"
+    },
+    {
+      "title": "Stochastic Bitcoin Modelling",
+      "description": "Research using stochastic differential equations to model Bitcoin prices, investigating the relative strengths of mean-reverting and trend-following behaviour.",
+      "image": "assets/images/GD_pipeline.jpg",
+      "link": "projects/bitcoin.html"
+    },
+    {
+      "title": "Personal Website",
+      "description": "Created a personal website to host information about projects I have completed, as well as other information.",
+      "image": "assets/images/GD_pipeline.jpg",
+      "link": "projects/project3.html"
+    },
+    {
+        "title": "And Another One",
+        "description": "Some more details...",
+        "image": "assets/images/GD_pipeline.jpg",
+        "link": "projects/project4.html"
+    }
+  ]
+  
