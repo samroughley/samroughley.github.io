@@ -1,1 +1,1 @@
-Code for personal website, hosting information about publications and projects I have done. Made with significant help from ChatGPT, as have never done web development (HTML + css).
+Code for personal website, hosting information about publications and projects I have done. Made with significant help from ChatGPT, as have never done web development (HTML + CSS).
