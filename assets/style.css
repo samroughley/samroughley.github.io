@@ -26,15 +26,20 @@ header {
     justify-content: space-between;  /* left and right columns spread out */
     align-items: center;
     padding: 20px;
-    gap: 20px;                        /* space between columns */
+    gap: 20px;                       /* space between columns */
     background-color: var(--secondary-color);
     flex-wrap: wrap;                 /* allows wrapping on small screens */
     color: white;
-}
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}  
 
 .full-width-header, .full-width-footer {
     width: 100%;
     background-color: var(--secondary-color);
+    overflow-x: hidden;
+    flex-wrap: wrap;
 }
 
 .header-content {
@@ -59,10 +64,21 @@ header {
     flex: 1 1 100px;                  /* grow/shrink, min-width 300px */
     align-items: center;
     text-align: center;
+    min-width: 0;
 }
 
+
+/* .header-left img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+} */
+  
+
 .header-right {
-    flex: 1 1 300px;                  /* grow/shrink, min-width 300px */
+    flex: 1 1 300px;                 /*  grow/shrink, min-width 300px */
+    min-width: 0;
 }
 
 .header-right h2 {
