@@ -41,100 +41,49 @@
       </section>
     </div>
 
+    <script>
+        fetch("posts.json")
+          .then(response => response.json())
+          .then(posts => {
+            const container = document.getElementById("blog-container");
+      
+            posts.forEach(post => {
+            //   const article = document.createElement("article");
+              const link = document.createElement("a");
+              link.href = post.link;
+              link.classList.add("post-link"); // for CSS styling
+              //link.target = "_blank"; // open in new tab
+            //   article.classList.add("post");
+    
+              // Create the artcile
+              const article = document.createElement("article");
+              article.classList.add("post")
+    
+              article.innerHTML = `
+                <h3 class="post-title">
+                  <a href="${post.link}">${post.title}</a>
+                </h3>
+                <p class="post-meta">${post.date} · ${post.readTime}</p>
+                <div class="post-excerpt">
+                  <p>${post.excerpt}</p>
+                  <a href="${post.link}" class="read-more">Read more →</a>
+                </div>
+              `;
+    
+                // Wrap article inside link
+                link.appendChild(article);
+                container.appendChild(link);
+                
+            });
+          })
+          .catch(error => console.error("Error loading posts:", error));
+    </script>
+    
+
 
 </main>  
 
-<!-- <script>
-    fetch("posts.json")
-      .then(response => response.json())
-      .then(posts => {
-        const container = document.getElementById("blog-container");
-  
-        posts.forEach(post => {
-            const article = document.createElement("a");
-            article.classList.add("post");
-            article.href = post.link;
 
-            article.innerHTML = `
-                <h3 class="post-title">${post.title}</h3>
-                <p class="post-meta">${post.date} · ${post.readTime}</p>
-                <div class="post-excerpt">
-                <p>${post.excerpt}</p>
-                <span class="read-more">Read more →</span>
-                </div>
-            `;
-
-            container.appendChild(article);
-            });
-
-      })
-      .catch(error => console.error("Error loading posts:", error));
-</script> -->
-
-<!-- <script>
-    fetch("posts.json")
-      .then(response => response.json())
-      .then(posts => {
-        const container = document.getElementById("blog-container");
-  
-        posts.forEach(post => {
-          const article = document.createElement("article");
-          article.classList.add("post");
-  
-          article.innerHTML = `
-            <h3 class="post-title">
-              <a href="${post.link}">${post.title}</a>
-            </h3>
-            <p class="post-meta">${post.date} · ${post.readTime}</p>
-            <div class="post-excerpt">
-              <p>${post.excerpt}</p>
-              <a href="${post.link}" class="read-more">Read more →</a>
-            </div>
-          `;
-  
-          container.appendChild(article);
-        });
-      })
-      .catch(error => console.error("Error loading posts:", error));
-</script> -->
-
-<script>
-    fetch("posts.json")
-      .then(response => response.json())
-      .then(posts => {
-        const container = document.getElementById("blog-container");
-  
-        posts.forEach(post => {
-        //   const article = document.createElement("article");
-          const link = document.createElement("a");
-          link.href = post.link;
-          link.classList.add("post-link"); // for CSS styling
-          //link.target = "_blank"; // open in new tab
-        //   article.classList.add("post");
-
-          // Create the artcile
-          const article = document.createElement("article");
-          article.classList.add("post")
-
-          article.innerHTML = `
-            <h3 class="post-title">
-              <a href="${post.link}">${post.title}</a>
-            </h3>
-            <p class="post-meta">${post.date} · ${post.readTime}</p>
-            <div class="post-excerpt">
-              <p>${post.excerpt}</p>
-              <a href="${post.link}" class="read-more">Read more →</a>
-            </div>
-          `;
-
-            // Wrap article inside link
-            link.appendChild(article);
-            container.appendChild(link);
-            
-        });
-      })
-      .catch(error => console.error("Error loading posts:", error));
-</script>
 
 
 
