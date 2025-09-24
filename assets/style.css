@@ -4,7 +4,8 @@
     --accent-color: #539B9B;
     --max-width: 900px;
     --padding: 20px;
-  }
+}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -19,6 +20,7 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 header {
@@ -398,7 +400,7 @@ a:hover {
 .view-more a {
     color: var(--secondary-color);       /* changes the paragraph text color */
     /* font-weight: bold;     optional: make it stand out */
-  }  
+}  
   
   
 /* Responsive adjustments */
@@ -483,3 +485,110 @@ a:hover {
     margin-top: 5px;
 }
 
+
+
+
+/* Blog section */
+/* Blog section */
+#blog {
+    margin-top: 2rem;
+}
+  
+.post {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+  
+.post-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.post-title-main-page {
+    margin: 0;
+    font-size: 2.5rem;
+}
+  
+.post-title a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+  
+.post-title a:hover {
+    text-decoration: underline;
+}
+
+.post img {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.post figcaption {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+  
+.post-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.2rem 0 0.8rem 0;
+}
+
+.post-excerpt {
+    margin: 0;
+    line-height: 1.5;
+    display: flex;
+    justify-content: space-between; /* pushes link to right */
+    align-items: baseline;          /* aligns link nicely with text */
+    gap: 1rem;                      /* space between text and link */
+}
+
+.post-excerpt p {
+    margin: 0;
+    flex: 1; /* take available space */
+}
+  
+.post-excerpt a {
+    margin-left: 0.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+  
+.post-excerpt a:hover {
+    text-decoration: underline;
+}
+
+.post-link {
+    text-decoration: none;
+    color: inherit;           /* keeps text color as defined in article */
+    display: block;           /* ensures link takes full article space */
+}
+  
+/* Box effect when hovering over it */
+/* .post-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+} */
+
+
+.read-more {
+    white-space: nowrap;  /* prevents wrapping of "Read more →" */
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+  
+.read-more:hover {
+    text-decoration: underline;
+}
+
+
+.go-back {
+    color: var(--secondary-color);
+}

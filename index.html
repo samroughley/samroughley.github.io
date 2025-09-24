@@ -30,6 +30,7 @@
         <nav class="nav-right">
         <a href="index.html">Home</a>   
         <a href="projects.html">Projects</a>
+        <a href="posts.html">Posts</a>
         <!-- <a href="photos.html">Photos</a> -->
         </nav>
     </div>
@@ -57,7 +58,7 @@
             <div class="header-right">
                 <section id="education">
                     <p>
-                        I am a recent physics graduate, interested in stuff physics, machine learning and quantitative finance. I have experience in using
+                        I am a recent physics graduate, interested in physics, machine learning and quantitative finance. I have experience in using
                         machine learning for anomaly detection in medical imaging, using vision-language models and LVLMs. I also have experience in 
                         quantitative trading, learning about options theory and market making.
                     </p>
@@ -127,7 +128,7 @@
             
                     article.innerHTML = `
                     <div class="publications">
-                        <h1>${publication.title}</h1>
+                        <h2>${publication.title}</h2>
                         <p><i>${publication.authors}</i></p>
                         <p><i>${publication.venue}</i></p>
                         ${publication.link ? `<a href="${publication.link}" target="_blank">Paper</a>` : ''}
