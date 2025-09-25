@@ -146,6 +146,10 @@ footer {
 footer h2 {
     color: white;
 }
+
+footer a {
+    color: white;
+}
   
 h1, h2 {
     margin-bottom: 10px;

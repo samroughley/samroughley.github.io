@@ -1,27 +1,21 @@
 [
-    {
-      "title": "Sports Betting Dashboard",
-      "description": "Dashboard analysing traditional betting markets and Polymarket, checking for arbitrage opportunities.",
-      "image": "assets/images/GD_pipeline.jpg",
-      "link": "https://github.com/samroughley/Prediction-Markets-Arbitrage"
-    },
-    {
-      "title": "Stochastic Bitcoin Modelling",
-      "description": "Research using stochastic differential equations to model Bitcoin prices, investigating the relative strengths of mean-reverting and trend-following behaviour.",
+  {
+      "title": "Stochastic Modelling of Bitcoin Prices (Ongoing)",
+      "description": "Researched using stochastic differential equations to model Bitcoin prices, investigating the relative strengths of mean-reverting and trend-following behaviour.",
       "image": "assets/images/GD_pipeline.jpg",
       "link": "projects/bitcoin.html"
     },
     {
-      "title": "Personal Website",
-      "description": "Created a personal website to host information about projects I have completed, as well as other information.",
-      "image": "assets/images/GD_pipeline.jpg",
-      "link": "https://github.com/samroughley/samroughley.github.io"
+      "title": "Sports Betting Dashboard",
+      "description": "Dashboard analysing traditional betting markets and Polymarket, checking for arbitrage opportunities.",
+      "image": "assets/projects_images/Sports_Betting_Dashboard/dashboard.png",
+      "link": "https://github.com/samroughley/Prediction-Markets-Arbitrage"
     },
     {
-        "title": "And Another One",
-        "description": "Some more details...",
-        "image": "assets/images/GD_pipeline.jpg",
-        "link": "projects/project4.html"
+      "title": "Personal Website",
+      "description": "Created a personal website to host information about projects I have completed, as well as other information.",
+      "image": "assets/projects_images/Personal_Website/Website_Home_Page_25-09-25.png",
+      "link": "https://github.com/samroughley/samroughley.github.io"
     }
   ]
   
