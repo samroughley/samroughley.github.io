@@ -2,7 +2,7 @@
   {
       "title": "Stochastic Modelling of Bitcoin Prices (Ongoing)",
       "description": "Researched using stochastic differential equations to model Bitcoin prices, investigating the relative strengths of mean-reverting and trend-following behaviour.",
-      "image": "assets/images/GD_pipeline.jpg",
+      "image": "assets/projects_images/Bitcoin_Stochastic_Modelling/Normed_Residuals_Model_Fit.png",
       "link": "projects/bitcoin.html"
     },
     {
