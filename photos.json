@@ -1,21 +1,10 @@
 [
     {
-      "src": "assets/images/LinkedIn_Profile_Photo.jpeg",
-      "caption": "This is a figure caption piece of text for my profile photo."
+      "src": "file_path",
+      "caption": "Optional Caption"
     },
     {
-      "src": "assets/images/SSP_AB_178142.jpg",
-      "caption": "First photo from my Cambridge Half Marathon"
-    },
-    {
-      "src": "assets/images/SSP_AB_178142.jpg"
-    },
-    {
-      "src": "assets/images/LinkedIn_Profile_Photo.jpeg"
-    },
-    {
-        "src": "assets/images/LinkedIn_Profile_Photo.jpeg",
-        "caption": "Another instance of my LinkedIn profile photo"
+      "src": "file_path"
     }
   ]
   
