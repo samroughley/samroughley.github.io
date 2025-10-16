@@ -1,2 +1,20 @@
 # Template files
 posts/post_template.html
+
+# Unprocessed photos
+assets/personal_photos/*.CR2
+# Converted photos
+assets/personal_photos/converted/*
+# Inlcude those that are used
+!assets/personal_photos/converted/IMG_0423.jpg
+!assets/personal_photos/converted/IMG_2230.jpg
+!assets/personal_photos/converted/IMG_1871.jpg
+!assets/personal_photos/converted/IMG_1066.jpg
+!assets/personal_photos/converted/IMG_2145.jpg
+!assets/personal_photos/converted/IMG_2038.jpg
+!assets/personal_photos/converted/IMG_2193.jpg
+!assets/personal_photos/converted/IMG_1881.jpg
+!assets/personal_photos/converted/IMG_2276.jpg
+!assets/personal_photos/converted/IMG_1634.jpg
+!assets/personal_photos/converted/IMG_2302.jpg
+
