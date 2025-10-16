@@ -1,5 +1,11 @@
 [
   {
+    "title": "Hull Tactical - Market Prediction (Ongoing)",
+    "description": "Participating in a Kaggle competition with the objective of developing a trading strategy to outperform the S&P 500 using machine learning and data science techniques.",
+    "image": "assets/projects_images/Hull-Tactical---Market-Prediction/competition_photo.jpg",
+    "link": "projects/Hull-Tactical---Market-Prediction.html"
+  },
+  {
       "title": "Stochastic Modelling of Bitcoin Prices (Ongoing)",
       "description": "Researched using stochastic differential equations to model Bitcoin prices, investigating the relative strengths of mean-reverting and trend-following behaviour.",
       "image": "assets/projects_images/Bitcoin_Stochastic_Modelling/Normed_Residuals_Model_Fit.png",
