@@ -6,7 +6,7 @@
     "link": "projects/Hull-Tactical---Market-Prediction.html"
   },
   {
-      "title": "Stochastic Modelling of Bitcoin Prices (Ongoing)",
+      "title": "Stochastic Modelling of Bitcoin Prices",
       "description": "Researched using stochastic differential equations to model Bitcoin prices, investigating the relative strengths of mean-reverting and trend-following behaviour.",
       "image": "assets/projects_images/Bitcoin_Stochastic_Modelling/Normed_Residuals_Model_Fit.png",
       "link": "https://github.com/samroughley/binary-options-stochastic-models"
