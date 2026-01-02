@@ -26,6 +26,3 @@ assets/personal_photos/converted/*
 # Currently ignore about.html file
 about.html
 
-# Currently ignore posts.html and posts.json files
-posts.html
-posts.json
