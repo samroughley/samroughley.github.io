@@ -26,3 +26,6 @@ assets/personal_photos/converted/*
 # Currently ignore about.html file
 about.html
 
+# Ignore unfinished posts
+posts/biased_coin.html
+posts_unfinished.json

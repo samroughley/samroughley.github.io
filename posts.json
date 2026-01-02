@@ -5,12 +5,5 @@
       "readTime": "9 min read",
       "excerpt": "An exploration of the December 2025 Jane Street puzzle, titled Robot Javelin.",
       "link": "posts/robot_javelin.html"
-    },
-    {
-      "title": "When can you determine that a coin is biased?",
-      "date": "September 2025",
-      "readTime": "5 min read",
-      "excerpt": "A brief overview of the ability to distinguish a fair from a biased coin aftr a certain number of trials. Involves the use of binomial distributions and Bayesian inference.",
-      "link": "posts/biased_coin.html"
     }
 ]
