@@ -1,9 +1,7 @@
 [
     {
-      "src": "assets/personal_photos/converted/IMG_0423.jpg"
-    },
-    {
-      "src": "assets/personal_photos/converted/IMG_2230.jpg"
+      "src": "assets/personal_photos/converted/IMG_2230.jpg",
+      "_caption": "Marina Bay Sands, Singapore"
     },
     {
       "src": "assets/personal_photos/converted/IMG_1871.jpg"
@@ -12,16 +10,22 @@
       "src": "assets/personal_photos/converted/IMG_1066.jpg"
     },
     {
-      "src": "assets/personal_photos/converted/IMG_2145.jpg"
+      "src": "assets/personal_photos/edited/IMG_2145.jpg",
+      "_caption": "New York Stock Exchange, New York"
     },
     {
-      "src": "assets/personal_photos/converted/IMG_2038.jpg"
+      "src": "assets/personal_photos/edited/IMG_2038.jpg"
     },
     {
-      "src": "assets/personal_photos/converted/IMG_2193.jpg"
+      "src": "assets/personal_photos/converted/IMG_1881.jpg",
+      "_caption": "Lake Garda, Italy"
     },
     {
-      "src": "assets/personal_photos/converted/IMG_1881.jpg"
+      "src": "assets/personal_photos/edited/IMG_1962-1.jpg"
+    },
+    {
+      "src_v1": "assets/personal_photos/converted/IMG_0423.jpg",
+      "src": "assets/personal_photos/converted/IMG_1274.jpg"
     },
     {
       "src": "assets/personal_photos/converted/IMG_2276.jpg"

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Roughley</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" type="image/png" sizes="180x180" href="../assets/images/favicon-180.png">
+
+    <!-- MathJax configuration -->
+    <script>
+        MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+        };
+    </script>
+
+    <!-- Load MathJax from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<nav class="navbar">
+    <div class="navbar-content">
+        <div class="nav-left">
+        <a href="../index.html">
+            <img src="../assets/images/favicon-180.png" sizes="180x180" alt="Home" class="favicon">
+        </a>
+        </div>
+
+        <!-- Hamburger icon for mobile -->
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          ☰
+        </button>
+
+        <nav class="nav-right">
+        <a href="../index.html">Home</a>   
+        <a href="../projects.html">Projects</a>
+        <a href="../posts.html">Posts</a>
+        <!-- <a href="../photos.html">Photos</a> -->
+        </nav>
+    </div>
+</nav>
+
+
+
+<body>
+
+    <main>
+        <div class="main-content">
+
+            <a class="go-back" href="../posts.html">&#8592 Go back</a>
+
+          <article class="post">
+            <h1 class="post-title-main-page">Robot Javelin</h1>
+            <p class="post-meta">January 2026 · 9 min read</p>
+
+            <p>
+                The December 2025 Jane Street puzzle, titled `Robot Javelin`, tasked people with
+                determining the optimal strategy when playing against a cheating opponent and 
+                calculating the resulting win probability. This post contains an exploration of
+                the game, deriving the final answer as well as numerically verifying some of the 
+                intermediate results and assumptions. 
+            </p>
+
+            <p>
+                Before beginning, I will present the problem. The official problem can be found 
+                <a href="https://www.janestreet.com/puzzles/robot-javelin-index/">here</a>, along
+                with the <a href="https://www.janestreet.com/puzzles/robot-javelin-solution/">solution</a>:
+            </p>
+
+            <div class="post-block-quote">
+
+                <p>It’s coming to the end of the year, which can only mean one thing: time for this year’s <strong>Robot Javelin</strong> finals! Whoa wait, you’ve never heard of Robot Javelin? Well then! Allow me to explain the rules:</p>
+                <ul>
+                  <li>It’s head-to-head. Each of two robots makes their first throw, whose distance is a real number drawn uniformly from [0, 1].</li>
+                  <li>Then, without knowledge of their competitor’s result, each robot decides whether to keep their current distance or erase it and go for a second throw, whose distance they must keep (it is also drawn uniformly from [0, 1]).</li>
+                  <li>The robot with the larger final distance wins.</li>
+                </ul>
+                
+                <p>This year’s finals pits your robot, Java-lin, against the challenger, Spears Robot. Now, robots have been competing honorably for years and have settled into the Nash equilibrium for this game. However, you have <em>just learned</em> that Spears Robot has found and exploited a leak in the protocol of the game. They can receive a single bit of information telling them whether their opponent’s first throw (distance) was above or below some threshold <em>d</em> of their choosing before deciding whether to go for a second throw. Spears has presumably chosen <em>d</em> to maximize their chance of winning — no wonder they made it to the finals!</p>
+                
+                <p>Spears Robot isn’t aware that you’ve learned this fact; they are assuming Java-lin is using the Nash equilibrium. If you <em>were</em> to adjust Java-lin’s strategy to maximize its odds of winning given this, what would be Java-lin’s updated probability of winning? Please give the answer in exact terms, or as a decimal rounded to 10 places.</p>
+                
+            </div>
+
+            <p>
+                To solve this problem, we will approach it in three separate stages. Firstly,
+                we will calculate the Nash equilibrium to determine the default
+                strategy all other robots will be using. Once completed, we can then determine
+                the strategy Spears Robot will be using. Finally, we can calculate our optimal
+                strategy when playing against Spears Robot, and our correponding win probability.
+            </p>
+
+            
+
+
+
+            
+
+            <h2>Determining the Nash Equilibrium</h2>
+
+            <p>
+                Before performing any numerical simulations, the location of the Nash equilibrium can 
+                be calculated analytically. Since the objective of the game is to throw as large a 
+                distance as possible, it is intuitive to expect that the optimal strategy will
+                involve a rethrow threshold, say $a$. That is, if the first throw is below $a$ you 
+                rethrow, otherwise you keep your first throw. 
+            </p>
+
+            <p>   
+                Therefore, consider a situation where
+                players A and B, with thresholds $a$ and $b$ respectively, are playing each other,
+                and define $P_{a}(win|b)$ as the probability of A winning the game given they use 
+                threshold of $a$ and their opponent uses a threshold of $b$. This probability can 
+                be expressed as:
+
+                $$ 
+                P_{a}(win \vert b) = \int_{0}^{1} p_{a}(win \vert x, b) \,p_{a}(x) \,dx
+                $$
+
+                where $p_{a}(x)$ is the probability of players A's final throw travelling a distance $x$, 
+                and $p_{a}(win \vert x, b)$ the probability of A winning given that throw. For a 
+                thresholding strategy, the distribution for player A's final throw is:
+
+                $$
+                p_{a}(x) = 
+                \begin{cases} 
+                (1+a) \,dx, & x \ge a \\
+                a\,dx, & x < a
+                \end{cases}
+                $$
+
+                Additionally, we can calculate $p_{a}(win \vert x, b)$ to be:
+
+                $$
+                p_{a}(win \vert x, b) = \int_{0}^{x} p_{b}(y) \,dy = 
+                \begin{cases} 
+                bx, & x < b \\
+                x + bx - b, & x \ge b
+                \end{cases}
+                $$ 
+
+                Substituting the above expressions into the equation for $P_{a}(win \vert b)$ and performing 
+                the integration, we find:
+
+                $$
+                P_{a}(win \vert b) = 
+                \begin{cases} 
+                \frac{1}{2} [1 + (a-b) + b^{2} - ab + ab(b-a)], & a \le b \\
+                \frac{1}{2} [1 + (a-b) + ab - a^{2} + ab(b-a)], & a > b
+                \end{cases} 
+                $$
+
+                As sanity checks, we can see that $P_{a}(win \vert a) = \frac{1}{2}$, as expected from 
+                symmetry. Additionally, it can also be checked that $P_{a}(win \vert b) + P_{b}(win \vert a) = 1$.
+            
+            </p>
+
+            <p>
+                We are now in the position to calulate the location of the Nash equilibrium, which can 
+                be identified through:
+
+                $$
+                \frac{\partial P_{a}(win \vert b)}{\partial a} = \frac{\partial P_{a}(win \vert b)}{\partial b} = 0
+                $$
+
+                This leads to the following pair of equations:
+
+                $$
+                1 - b + b^{2} - 2ab = 0
+                $$
+                $$
+                2b + 2ab - a - a^{2} - 1 = 0
+                $$
+
+                By the symmetry of the game, we would expect the Nash equilibrium to be symmetric. Setting $a=b$,
+                the above two equations reduce to the same equation, with solutions $a=\frac{\pm \sqrt{5}-1}{2}$. 
+                Since $0 < a < 1$, we can condiser only the positive root. Therefore, we have idenfitified the Nash 
+                equilibrium strategy as having a threshold of $\frac{\sqrt{5}-1}{2}$ for both players.
+            </p>
+
+            <p>
+                <strong>Numerical simulation:</strong> We can attempt to verify the above solution through a numerical
+                simulation. To do this, we can visualise the probability of player A winning for a range of possible
+                values of $a$ and $b$. We can then calculate the optimal value of $a$ for all given values of $b$ and 
+                overlay the results on the visualisation. By using the knowledge that $a = b$ in the Nash equilibrium 
+                due to the game's symmetry, we can check that $a_{optim} = b$ occurs at $a = b = \frac{\sqrt{5}-1}{2}$.
+            </p>
+
+            <figure>
+                <img src="../assets/posts_photos/robot_javelin/Nash_Equilbirum_Simiulation_with_Best_Threshold_Curve.png" alt="Example image" class="responsive-img">
+                <figcaption>
+                    Numerical visualisation of the optimal threshold for player A for a given player B threshold, with 
+                    the red circle identifying the analytical solution
+                </figcaption>
+            </figure>
+
+            <p>
+                As can be seen in the above figure, in which a red circle is used to identify $a = b = \frac{\sqrt{5}-1}{2}$, 
+                the optimal value of $a$ crosses the line $a=b$ at approximately the value expected from analytical calculation. 
+                This therefore confirms our calculations.
+            </p>
+
+
+
+
+            <h2>Spears Robot</h2>
+
+            <p>
+                Now that the Nash equilibrium strategy has been determined, we know everything necessary to calculate
+                Spears Robot's strategy. Again, since the objective of the game is to throw the geratest distance,
+                Spears Robot will be following a thresholding strategy, and therefore we must determine the optimal 
+                threshold. However, since Spears Robot also has access to the additional bit of information, the 
+                threshold value must be conditioned on the information contained within that bit. Therefore, to 
+                determine Spear's Robots full strategy, we must determine both the optimal value of $d$, as well 
+                as the corresponding thresholds for the two possible bit states.
+            </p>
+
+            <p>
+                Let's define $B_{+}$ and $B_{-}$ as the states of the bit when the opponents first throw is above and 
+                below d respectively. We can then define $t_{+}$ and $t_{-}$ as the corresponding rethrow thresholds. 
+                The probability of Spears Robot winning for a given strategy, $S(win \vert d, t)$, can then be expressed
+                as:
+
+                $$ 
+                S(win \vert d, t) = d \,S(win \vert d, t_{-}) + (1-d) \,S(win \vert d, t_{+})
+                $$
+
+                since the probability distribution for their opponents first throw is uniform. The task of determining
+                Spears Robot's optimal strategy is then just a problem of maximising the above expression with respect 
+                to $t_{+}$, $t_{-}$, and $d$.
+            </p>
+
+            <p>
+                When trying to estimate the optimal value of $d$, call it $d_{optim}$, it is reasonable to guess that 
+                $d_{optim} = \frac{\sqrt{5}-1}{2}$ since Spears Robot will then know for sure whether their oponent 
+                rethrows (i.e. the maximum information is contained within the bit). However, this is something that 
+                we will verify.
+            </p>
+
+            <p>
+                To do this, we will determine $t_{+}$ and $t_{-}$ that maximise $S(win \vert d,t)$ for a given d,
+                and then plot the dependence on $d$. This involves evaluating the expression for $S(win \vert d,t)$, 
+                which is best done by considering the cases $d < \frac{\sqrt{5}-1}{2}$ and $d > \frac{\sqrt{5}-1}{2}$
+                separately.
+            </p>
+
+            <h3>$d < \frac{\sqrt{5}-1}{2}$</h3>
+
+            <p>
+                When the opponents first throw is below $d$, we know that they will rethrow and hence their final 
+                throw distance has a uniform distribution. As such, Spears Robot's best threshold will be 
+                $t_{-}=\frac{1}{2}$. When their first throw is greater than $d$, we do not know if they will rethrow.
+                We must therefore directly aim to maximise the expression for $S(win \vert d, t)$. Evaluating the 
+                resulting integrals requires knowing whether $t_{+} < \frac{\sqrt{5}-1}{2}$ or 
+                $t_{+} > \frac{\sqrt{5}-1}{2}$. Since the additional information contained in the bit leads 
+                the distribution of the opponents final throw to grow at larger values, Spears Robot must aim to 
+                do the same. Therefore, we expect $t_{+} > \frac{\sqrt{5}-1}{2}$, which was verified through 
+                computational simulation.
+            </p>
+
+            <p>
+                We also know that the distribution of the opponent's final throw is:
+
+                $$
+                p(x) \,dx = 
+                \begin{cases} 
+                \frac{1+A-d}{1-d} \, dx, & x > A \\
+                \frac{A-d}{1-d}\,dx, & x < A
+                \end{cases}
+                $$
+
+                where $A = \frac{\sqrt{5}-1}{2}$. The above results are derived by considering how there is a 
+                $\frac{A-d}{1-d}$ probability of the opponent rethrowing. After converting the above distribution 
+                into a cumulative distribution, we find that we can write:
+
+                $$
+                S(win \vert d < A, t_{+} > A) = \int_{0}^{A} \frac{A-d}{1-d} x t_{+} \,dx + \int_{A}^{t_{+}} \frac{x(1+A-d)-A}{1-d}t_{+}\,dx + \int_{t_{+}}^{1} \frac{x(1+A-d)-A}{1-d} (1+t_{+}) \,dx
+                $$
+
+                Evaluating the above integral and maximising with respect to t_{+}, we find that the maximum 
+                win probability when the opponents first throw is above $d< A$ is achieved by a strategy with:
+
+                $$
+                t_{+} = \frac{d-A^{2}-A-1}{2(d-A-1)}
+                $$
+
+                which can be used to calculate the resulting win probability.
+            </p>
+
+            <h3>$d > \frac{\sqrt{5}-1}{2}$</h3>
+
+            <p>
+                When the opponents first throw is greater than $d$ we know they won't rethrow, leading to a 
+                uniform distribution for their final throw between $d$ and $1$. We know that Spears Robot's threshold 
+                must therefore be $t_{+} \ge d$ by necessity. By maximising the win probability with this in mind, 
+                we find $t_{+} = \frac{d^{2}+1}{2}$.
+            </p>
+
+            <p>
+                When their first throw is below $d$, compuational modelling found that $t_{-} < A$, hence we consider 
+                only this case. We use that the distribution for the opponent's final throw will be:
+
+                $$ 
+                p(x) = 
+                \begin{cases} 
+                \frac{1+A}{d}\,dx, & A \le x \le d \\
+                \frac{1}{d}\,dx, & \text{elsewhere}
+                \end{cases}
+                $$
+
+                and hence:
+
+                $$
+                S(win \vert d > A, t_{-} < A) = \int_{0}^{t_{+}} \frac{A}{d} t_{-}x \,dx + \int_{t_{-}}^{A} \frac{A(1+t_{-})}{d}x\,dx + \int_{A}^{d} \frac{x(1+A)-A}{d}(1+t_{-})\,dx + \int_{d}^{1} \frac{Ax+d-A}{d}(1+t_{-})\,dx
+                $$
+
+                Maximising this expression with respect to t_{-}, we find that the optimal threshold is:
+
+                $$
+                t_{-} = \frac{A^{2}-d^{2}+2d-A}{2A}
+                $$
+
+                which was verified computationally.
+            </p>
+
+            <h3>Combined</h3>
+
+            <p>
+                We can now bring together the two cases before, and plot the maximum win probability for Spears Robot 
+                as a function of $d$. From inspecting the plot, we see that our suspicions have been confirmed, with 
+                the optimal value of $d$ being $d=\frac{\sqrt{5}-1}{2}$. We can also verify this by calculating the 
+                locations of the stationary points, and finding that they exist outside of the relevant values of $d$
+                for the two cases.
+            </p>
+
+            <figure>
+                <img src="../assets/posts_photos/robot_javelin/Spears_Robot_Win_Prob.png" alt="Example image" class="responsive-img">
+                <figcaption>
+                    Maximum win probability that can be achieved by Spears Robot as a function of the selected value of $d$
+                </figcaption>
+            </figure>
+
+            <p>
+                Substituting this result into our expressions for the optimal thresholds derived earlier, we construct 
+                the strategy that Spears Robot will be using:
+                <ul>
+                    <li>
+                        Select $d=\frac{\sqrt{5}-1}{2}$ to gain maximal information from the bit
+                    </li>
+                    <li>
+                        If the opponent's first throw is below $d$, rethrow if own first throw is below $0.5$
+                    </li>
+                    <li>
+                        If the opponent's first throw is above $d$, rethrow if own throw is below $\frac{A^{2}+1}{2}$
+                    </li>
+                </ul>
+            </p>
+
+
+
+
+            <h2>Java-Lin</h2>
+
+            <p>
+                Now that we know Spears Robot's strategy, we can devise our optimal response. Once again, the strategy will 
+                be a threshold strategy. Since we don't have access to any additional information about Spears Robot's throws,
+                our strategy will consist of a single threshold for which we rethrow iff our first throw is below it.
+            </p>
+
+            <p>
+                To determine our optimal response, let's split the problem into cases where our first throw is above and 
+                below $d$, since these two cases lead to different behaviour by Spears Robot. Let $T(win)$ be our 
+                probability of winning, hence:
+
+                $$
+                T(win) = A T(win \vert 1^{\text{st}}\text{ throw} < A) + (1-A) T(win \vert 1^{\text{st}}\text{ throw} > A)
+                $$
+            </p>
+
+            <h3>First Throw $< A$</h3>
+
+            <p>
+                Following a similar process to earlier calculations, we can calculate $T(win \vert 1^{\text{st}}\text{ throw} < A)$ 
+                for a given rethrow threshold, $r_{-}$. Computational modelling found that $r_{-} > \frac{1}{2}$, however 
+                this is to be expected as we are going to need to increase our probability of throwing the larger distances 
+                since we are playing against an opponent that has access to additional information. This leads to the following 
+                expression:
+
+                $$ 
+                \begin{split} 
+                T(win \vert 1^{\text{st}}\text{ throw} < A) & = \int_{0}^{\frac{1}{2}} \frac{r_{-}x}{2A}\,dx + \int_{\frac{1}{2}}^{{r_{-}}} (\frac{3x}{2}-\frac{1}{2})\frac{r_{-}}{A}\,dx + \int_{r_{-}}^{A} (\frac{3x}{2}-\frac{1}{2})\frac{1+r_{-}}{A}\,dx + \int_{A}^{1} (\frac{3x}{2}-\frac{1}{2})\frac{r_{-}}{A}\,dx \\
+                & = \frac{1}{A} (\frac{7r_{-}}{8} + \frac{3A^{2}}{4} - \frac{A}{2} - \frac{3r_{-}^{2}}{4})
+                \end{split}
+                $$
+
+                We find  that the above expression is maximised for $r_{-}=\frac{7}{12}$, defining our strategy when our first throw 
+                is below A.
+            </p>
+
+            <h3>First Throw $> A$</h3>
+
+            <p>
+                Seeing as it is possible for us to throw below $A$ in our first throw and it be optimal to not rethrow, it 
+                feels unlikely that we would ever want to rethrow if our first throw above $A$. However, since in 
+                these two scenarios Spears Robot plays differently, our strategy may need to adjust accordingly. 
+            </p>
+
+            <p>
+                The process for working out our optimal threshold in this scenario follows the same procedure as previous 
+                calculations, therefore I will skip the details. Performing the calculations, we find that the optimal 
+                rethrow threshold is given by:
+
+                $$
+                r_{+} = \frac{1}{2t_{+}} - \frac{1}{2} + \frac{t}{2} \approx 0.5691 < A
+                $$
+
+                Since this threshold is below $A$, we can interpret this as confirmation that it is never optimal to 
+                rethrow if our first throw is above $A$, despite Spears Robot having access to that information.
+            </p>
+
+            <h3>Overall Strategy</h3>
+
+            <p>
+                Bringing together the working above, we have constructed our optimal strategy for playing Spears Robot:
+            </p>
+
+            <strong>We rethrow iff our first throw is below $\frac{7}{12}$</strong>
+
+            <p>
+                The final thing we must now do is calculate the resulting probability for us beating Spears Robot.
+                Upon substituting into earlier expressions, we find:
+
+                $$
+                T(win) = \frac{121}{192} - \frac{A}{2} + \frac{A^{2}}{2} - \frac{A^{4}}{8} \approx 0.4939370904
+                $$
+
+                given to $10$ decimal places, which is consistent with the official solution.
+            </p>
+
+          </article>
+        </div>
+    </main>
+
+    <!-- Add the footer -->
+    <footer class="full-width-footer">
+      <div class="footer-content">
+        <p>&#169; 2025 Sam Roughley</p>
+        <nav>
+          <a href="../index.html">Home</a> · 
+          <a href="../projects.html">Projects</a> ·
+          <a href="posts.html">Posts</a>
+          <!-- <a href="../photos.html">Photos</a> -->
+        </nav>
+        <div style="height: 10px;"></div> <!-- blank space -->
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/samroughley/" target="_blank">
+            <img src="../assets/images/linkedin-app-white-icon.webp" alt="LinkedIn" class="social-icon">
+          </a>
+          <a href="https://github.com/samroughley" target="_blank">
+            <img src="../assets/images/github_white_logo.png" alt="GitHub" class="social-icon">
+          </a>
+        </div>
+      </div>
+    </footer>
+
+<script src="../assets/script.js"></script>
+</body>

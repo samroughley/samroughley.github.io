@@ -281,6 +281,38 @@ a:hover {
 }
   
 
+/* --- Hamburger toggle (hidden on large screens) --- */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+  
+/* --- Mobile Styles --- */
+@media (max-width: 700px) {
+    .nav-toggle {
+      display: block;
+    }
+  
+    .nav-right {
+      display: none;
+      flex-direction: column;
+      background-color: #fff;
+      position: absolute;
+      top: 60px; /* adjust to match navbar height */
+      right: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 0.5em;
+    }
+  
+    .nav-right.show {
+      display: flex;
+    }
+}
+
 
 /* For grid / columns */
 .two-column {
@@ -528,6 +560,13 @@ a:hover {
     margin-right:auto;
 }
 
+
+.responsive-img {
+max-width: 70%;
+height: auto;
+}
+
+
 .post figcaption {
     display:block;
     margin-left:auto;
@@ -539,6 +578,11 @@ a:hover {
     font-size: 0.9rem;
     color: #666;
     margin: 0.2rem 0 0.8rem 0;
+}
+
+.post-block-quote {
+    font-style: italic; /* The italic text */
+    padding: 20px;
 }
 
 .post-excerpt {
