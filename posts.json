@@ -1,7 +1,15 @@
 [
     {
+      "title": "Implementing K-Means Clustering in Python",
+      "date": "August 2026",
+      "readTime": "10 min read",
+      "excerpt": "An overview and from-scratch implementation of the K-Means clustering algorithm using Python and NumPy.",
+      "link": "https://open.substack.com/pub/samroughley/p/implementing-k-means-clustering-in?r=4hykt9&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true",
+      "isSubstack": true
+    },
+    {
       "title": "Robot Javelin",
-      "date": "January 2025",
+      "date": "January 2026",
       "readTime": "9 min read",
       "excerpt": "An exploration of the December 2025 Jane Street puzzle, titled Robot Javelin.",
       "link": "posts/robot_javelin.html"

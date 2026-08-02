@@ -63,12 +63,16 @@
               // Create the artcile
               const article = document.createElement("article");
               article.classList.add("post")
+
+              const substackBadge = post.isSubstack
+                ? `<span class="substack-badge">Substack</span>`
+                : "";
     
               article.innerHTML = `
                 <h3 class="post-title">
                   <a href="${post.link}">${post.title}</a>
                 </h3>
-                <p class="post-meta">${post.date} · ${post.readTime}</p>
+                <p class="post-meta">${post.date} · ${post.readTime} ${substackBadge}</p>
                 <div class="post-excerpt">
                   <p>${post.excerpt}</p>
                   <a href="${post.link}" class="read-more">Read more →</a>
